@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import "./Css/style.css"
+import InputUnstyled from '@mui/base/InputUnstyled';
+import Form from "./components/Form";
+import { useState } from "react";
+import ListTodo from "./components/ListTodo"
 
-function App() {
+
+export default function App() {
+
+  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [edit,setEdit] = useState(null);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div className="container">
+      <div className="app-wrapper">
+        <div className='header'>
+          <h1>Todo List</h1>
+        </div>
+        <div>
+          <Form
+            input={input}
+            setInput={setInput}
+            todos={todos}
+            setTodos={setTodos}
+            edit = {edit}
+            setEdit = {setEdit}
+            />
+        </div>
+        <div>
+          <ListTodo
+            todos={todos}
+            setTodos={setTodos}
+            setEdit = {setEdit}
+          />
+        </div>
 
-export default App;
+        <div>
+     
+    </div>
+      </div>
+
+
+
+    </div>
+  )
+}
